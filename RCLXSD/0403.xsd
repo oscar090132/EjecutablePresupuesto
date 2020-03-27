@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 2 (http://www.altova.com) by Juan Rave (SINAP) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:include schemaLocation="0001.xsd"/>
+	<xs:element name="fuentes">
+		<xs:annotation>
+			<xs:documentation>Arreglo de fuentes maximo 2000 por archivo</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="fuente" maxOccurs="2000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="fuente">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="codigo" type="CodigoC20RType" />
+				<xs:element name="nombre" type="NombreC100RType" />
+				<xs:element name="codigoHomologado" type="CodigoC20RType" />
+				<xs:element name="conFondos" type="BooleanN2RType" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="libreDestinacion" type="BooleanN2RType" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

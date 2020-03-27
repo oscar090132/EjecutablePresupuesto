@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 3 (http://www.altova.com) by jam (casa) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="0001.xsd"/>
+	<xs:simpleType name="DescripsionC250RType">
+		<xs:restriction base="DescripcionC2000NType">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="250"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="armonizacion">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="planDesarrollo" type="CodigoC20RType"/>
+				<xs:element name="eje" type="CodigoC20RType"/>
+				<xs:element name="sector" type="CodigoC20RType"/>
+				<xs:element name="objetivo" type="CodigoC20RType"/>
+				<xs:element name="programa" type="CodigoC20RType"/>
+				<xs:element name="subPrograma" type="CodigoC20NType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>	
+	<xs:element name="ubicacion">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ubicacion" type="EnteroN9RType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="poblacion">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="esAfectada" type="BooleanB2RType"/>
+				<xs:element name="tipoPoblacion" type="CodigoN10RType"/>
+				<xs:element name="cantidadMasculina" type="EnteroN9RType"/>
+				<xs:element name="cantidadFemenina" type="EnteroN9RType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="actividadPoai">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="vigencia" type="VigenciaN4RType"/>
+				<xs:element name="valor" type="ValorN18RType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="insumo">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="articulo" type="CodigoC20RType"/>
+				<xs:element name="cantidad" type="EnteroN9RType"/>
+				<xs:element name="unidad" type="EnteroN9RType"/>
+				<xs:element name="valor" type="ValorN18RType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="actividad">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="codigo" type="CodigoC20RType"/>
+				<xs:element name="descripcion" type="DescripcionC2000RType"/>
+				<xs:element name="responsable" type="DocumentoC15RType"/>
+				<xs:element name="fuente" type="CodigoC20RType"/>
+				<xs:element name="esContratista" type="BooleanB2RType"/>
+				<xs:element name="esExterno" type="BooleanB2RType"/>
+				<xs:element name="valor" type="ValorN18RType" minOccurs="0"/>
+				<xs:element ref="ActividadesPoai" minOccurs="0"/>
+				<xs:element ref="Insumos" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="fase">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="codigo" type="CodigoC20RType"/>
+				<xs:element name="nombre" type="DescripcionC2000RType"/>
+				<xs:element name="responsable" type="DocumentoC15RType"/>
+				<xs:element name="fechaInicio" type="xs:date" minOccurs="0"/>
+				<xs:element name="fechaFin" type="xs:date" minOccurs="0"/>
+				<xs:element ref="Actividades" minOccurs="0" maxOccurs="2000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="efectoAmbiental">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="acto" type="CodigoC20RType"/>
+				<xs:element name="fechActo" type="xs:date"/>
+				<xs:element name="tipo" type="DescripcionC2000RType"/>
+				<xs:element name="autoridad" type="DocumentoC15NType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="metaProducto">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="codigo" type="CodigoC20RType"/>
+				<xs:element name="programa" type="CodigoC20RType"/>
+				<xs:element name="metaResultado" type="CodigoC20RType"/>
+				<xs:element name="descripcion" type="DescripcionC2000RType" minOccurs="0"/>
+				<xs:element name="indicador" type="CodigoC20RType" />
+				<xs:element name="producto" type="ValorN18RType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="fuente">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="codigo" type="CodigoC20RType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ActividadesPoai">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="actividadPoai" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Insumos">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="insumo" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Actividades">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="actividad" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Armonizaciones">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="armonizacion" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Poblaciones">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="poblacion" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Ubicaciones">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ubicacion" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Fuentes">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="fuente" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Fases">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="fase" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EfectosAmbientales">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="efectoAmbiental" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="MetasProducto">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="metaProducto" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="proyectos">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="proyecto" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="proyecto">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="planDesarrollo" type="CodigoC20RType"/>
+				<xs:element name="ejeEstrategico" type="CodigoC20RType"/>
+				<xs:element name="sector" type="CodigoC20RType"/>
+				<xs:element name="objetivoEstrategico" type="CodigoC20RType"/>
+				<xs:element name="programa" type="CodigoC20RType"/>
+				<xs:element name="subPrograma" type="CodigoC20NType" minOccurs="0"/>
+				<xs:element name="administracionDirecta" type="BooleanB2RType"/>
+				<xs:element name="codigo" type="CodigoC20RType"/>
+				<xs:element name="nombre" type="DescripsionC250RType"/>
+				<xs:element name="problema" type="DescripcionC2000NType"/>
+				<xs:element name="tipoProyectoAmbiental" type="CodigoC20RType"/>
+				<xs:element name="objetivo" type="DescripcionC2000NType"/>
+				<xs:element name="responsable" type="DocumentoC15RType"/>
+				<xs:element name="fechaInicia" type="xs:date"/>
+				<xs:element name="fechaFinaliza" type="xs:date"/>
+				<xs:element ref="Armonizaciones" minOccurs="0"/>
+				<xs:element ref="Poblaciones" minOccurs="0"/>
+				<xs:element ref="Ubicaciones" minOccurs="0"/>
+				<xs:element ref="Fuentes" minOccurs="0"/>
+				<xs:element ref="Fases" minOccurs="0"/>
+				<xs:element ref="EfectosAmbientales" minOccurs="0"/>
+				<xs:element ref="MetasProducto" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

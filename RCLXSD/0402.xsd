@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSpy v2011 rel. 2 (http://www.altova.com) by Juan Rave (SINAP) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:include schemaLocation="0001.xsd"/>
+	<xs:element name="descripcion">
+		<xs:simpleType>
+			<xs:restriction base="DescripcionC2000RType">
+				<xs:maxLength value="500"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="rubroFuente">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="codigoFuente" type="CodigoC20RType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="RubroFuentes">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="rubroFuente" minOccurs="1" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="rubros">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="rubroPresupuestal" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="rubroPresupuestal">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="vigencia" type="VigenciaN4RType"/>
+				<xs:element name="esIngreso" type="BooleanB2RType"/>
+				<xs:element name="codigo" type="CodigoC20RType"/>
+				<xs:element ref="descripcion"/>
+				<xs:element name="codigoHomologado" type="CodigoC20RType"/>
+				<xs:element ref="RubroFuentes" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

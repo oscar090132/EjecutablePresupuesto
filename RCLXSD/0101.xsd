@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSpy v2011 rel. 3 (http://www.altova.com) by jam (casa) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:include schemaLocation="0001.xsd"/>
+	
+	<xs:element name="naturales">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="natural" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="natural">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="tipoDocumento" type="EnteroN9RType"/>
+				<xs:element name="documento" type="DocumentoC15RType"/>
+				<xs:element name="primerNombre" type="NombreC100RType"/>
+				<xs:element name="segundoNombre" type="NombreC100NType" minOccurs="0"/>
+				<xs:element name="primerApellido" type="NombreC100RType"/>
+				<xs:element name="segundoApellido" type="NombreC100NType" minOccurs="0"/>
+				<xs:element name="direccion" type="DireccionC300RType"/>
+				<xs:element name="deptoDireccion" type="DepartamentoN2RType"/>
+				<xs:element name="munDireccion" type="MunicipioN3RType"/>
+				<xs:element name="telefono" type="TelefonoN20RType"/>
+				<xs:element name="fax" type="TelefonoN20RType" minOccurs="0"/>
+				<xs:element name="correo" type="CorreElectronicoC100NType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

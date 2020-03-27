@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 3 (http://www.altova.com) by jam (casa) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="0001.xsd"/>
+	<xs:element name="compromisoRubro">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="disponibilidadRubro" type="CodigoC50RType"/>
+				<xs:element name="valor" type="ValorN18RType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CompromisoRubros">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="compromisoRubro" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="compromisos">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="compromiso" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="compromiso">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="consecutivo" type="CodigoEspecialC20RType"/>
+				<xs:element name="vigencia" type="VigenciaN4RType"/>
+				<xs:element name="beneficiario" type="DocumentoC15RType"/>
+				<xs:element name="descripcion" type="DescripcionC2000NType"/>
+				<xs:element name="fechaAprobacion" type="xs:date"/>
+				<xs:element ref="CompromisoRubros" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

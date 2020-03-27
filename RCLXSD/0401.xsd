@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="vigencia" type="xs:gYear" nillable="false">
+		<xs:annotation>
+			<xs:documentation>Vigencia del Compromiso</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="valorInicial" nillable="false">
+		<xs:annotation>
+			<xs:documentation>Valor Inicial del Rubro</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:double">
+				<xs:pattern value="[0-9]{1,20}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="rubroFuente">
+		<xs:annotation>
+			<xs:documentation>Código del Rubro Presupuestal de la Entidad</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:minLength value="1"/>
+				<xs:maxLength value="50"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="fechaAprobacion" type="xs:date"/>
+	<xs:element name="entidad">
+		<xs:annotation>
+			<xs:documentation>Nit de la Entidad que realiza la rendición</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:minLength value="0"/>
+				<xs:maxLength value="20"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="descripcion">
+		<xs:annotation>
+			<xs:documentation>Descripción del Compromiso</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:minLength value="0"/>
+				<xs:maxLength value="450"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="consecutivo">
+		<xs:annotation>
+			<xs:documentation>Consecutivo del Compromiso</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:minLength value="1"/>
+				<xs:maxLength value="20"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="compromisos">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="compromiso" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="compromisoRubro">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="rubroFuente"/>
+				<xs:element ref="valorInicial"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="compromiso">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="entidad"/>
+				<xs:element ref="vigencia"/>
+				<xs:element ref="consecutivo"/>
+				<xs:element ref="descripcion"/>
+				<xs:element ref="beneficiario"/>
+				<xs:element ref="fechaAprobacion"/>
+				<xs:element ref="CompromisoRubros"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="beneficiario">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:minInclusive value="0"/>
+				<xs:maxInclusive value="20"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="CompromisoRubros">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="compromisoRubro" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

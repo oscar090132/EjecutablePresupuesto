@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 3 (http://www.altova.com) by jam (casa) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:include schemaLocation="0001.xsd"/>
+	<xs:element name="nivel">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="tipo" type="TipoC1RType"/>
+				<xs:element name="rubroFuente" type="CodigoC50RType"/>
+				<xs:element name="valor1" type="ValorN18RType" minOccurs="0"/>
+				<xs:element name="valor2" type="ValorN18RType" minOccurs="0"/>
+				<xs:element name="valor3" type="ValorN18RType" minOccurs="0"/>
+				<xs:element name="valor4" type="ValorN18RType" minOccurs="0"/>
+				<xs:element name="valor5" type="ValorN18RType" minOccurs="0"/>
+				<xs:element name="valor6" type="ValorN18RType" minOccurs="0"/>
+				<xs:element name="valor7" type="ValorN18RType" minOccurs="0"/>
+				<xs:element name="valor8" type="ValorN18RType" minOccurs="0"/>
+				<xs:element name="valor9" type="ValorN18RType" minOccurs="0"/>
+				<xs:element name="valor10" type="ValorN18RType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Niveles">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="nivel" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="entidad">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="marcoFiscal" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="marcoFiscal">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="vigencia" type="VigenciaN4RType"/>
+				<xs:element ref="Niveles" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

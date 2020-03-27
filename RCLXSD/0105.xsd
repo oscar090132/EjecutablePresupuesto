@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:include schemaLocation="0001.xsd"/>
+	<xs:element name="SaldosFuentes">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="saldoFuente" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="fuente">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="codigo" type="CodigoEspecialC20RType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="saldoFuente">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="vigencia" type="VigenciaN4RType"/>
+				<xs:element name="fuente" type="CodigoEspecialC20RType"/>
+				<xs:element name="saldo" type="ValorN18RType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Fuentes">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="fuente" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="cuentasBancarias">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="cuentaBancaria" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="cuentaBancaria">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="banco" type="CodigoC10RType"/>
+				<xs:element name="numeroCuenta" type="CodigoC50RType2"/>
+				<xs:element name="tipo" type="EnteroN9RType"/>
+				<xs:element ref="Fuentes"/>
+				<xs:element ref="SaldosFuentes"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

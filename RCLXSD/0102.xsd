@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 3 (http://www.altova.com) by jam (casa) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:include schemaLocation="0001.xsd"/>
+	<xs:simpleType name="razonSocial">
+		<xs:restriction base="DescripcionC2000RType">
+			<xs:maxLength value="500"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="sigla">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+			<xs:maxLength value="20"/>
+			<xs:whiteSpace value="collapse"/>
+			<xs:pattern value="[a-zA-Z0-9_.(-) ]*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="juridicos">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="juridico" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="juridico">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="tipo" type="EnteroN9RType"/>
+				<xs:element name="documento" type="DocumentoC15RType"/>
+				<xs:element name="razonSocial" type="razonSocial"/>
+				<xs:element name="sigla" type="sigla" minOccurs="0"/>
+				<xs:element name="direccion" type="DireccionC300RType"/>
+				<xs:element name="deptoDireccion" type="DepartamentoN2RType"/>
+				<xs:element name="munDireccion" type="MunicipioN3RType"/>
+				<xs:element name="telefono" type="TelefonoN20RType"/>
+				<xs:element name="fax" type="TelefonoN20RType" minOccurs="0"/>
+				<xs:element name="correo" type="CorreElectronicoC100NType" minOccurs="0"/>
+				<xs:element name="docRepresentateLegal" type="DocumentoC15NType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 3 (http://www.altova.com) by jam (casa) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="0001.xsd"/>
+	<xs:element name="tipo">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:minInclusive value="0"/>
+				<xs:maxInclusive value="9"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="recaudoRubro">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="cuentaBancaria" type="CodigoC50RType2"/>
+				<xs:element name="rubroFuente" type="CodigoC50RType"/>
+				<xs:element name="valor" type="ValorN18RType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Rubros">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="recaudoRubro" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="recaudos">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="recaudo" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="recaudo">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="consecutivo" type="CodigoC20RType"/>
+				<xs:element name="fecha" type="xs:date"/>
+				<xs:element ref="tipo"/>
+				<xs:element ref="Rubros" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

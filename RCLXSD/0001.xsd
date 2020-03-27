@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--Created with Liquid XML Studio Developer Edition (Trial) 9.1.1.3301 (http://www.liquid-technologies.com)-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:simpleType name="BooleanB2RType">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="true|false"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TipoC1RType">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="I|E"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TipoModificacionC1RType">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="A|R"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CaracterC1RType">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CodigoC12NType">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="0"/>
+			<xsd:maxLength value="12"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CodigoEspecialC20RType">
+		<xsd:annotation>
+			<xsd:documentation>
+		Este es el tipo de dato que se aplica al codigo de la fuente, se dice especial por que no soporta [ - ]
+	</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="20"/>
+			<xsd:whiteSpace value="collapse"/>
+			<xsd:pattern value="[a-zA-Z0-9. _]*"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CodigoEspecialC50RType">
+		<xsd:annotation>
+			<xsd:documentation>
+		Este es el tipo de dato que se aplica al codigo de rubro, se dice especial por que no soporta [ - ]
+	</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="50"/>
+			<xsd:whiteSpace value="collapse"/>
+			<xsd:pattern value="[a-zA-Z0-9. _]*"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CodigoC50RType">
+		<xsd:annotation>
+			<xsd:documentation>
+		Este es el tipo de dato que se aplica al codigo de rubroFuente, se dice que es de 50 pero en este momento su longitud puede ser de 71
+	</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="71"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CodigoC50RType2">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="50"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CodigoC92RType">
+		<xsd:annotation>
+			<xsd:documentation>
+		Este es el tipo de dato que se aplica al codigo de compromisoRubroFuente
+	</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="92"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CodigoC113RType">
+		<xsd:annotation>
+			<xsd:documentation>
+		Este es el tipo de dato que se aplica al codigo de obligacionCompromisoRubroFuente
+	</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="113"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CodigoC30RType">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="30"/>
+			<xsd:whiteSpace value="collapse"/>
+			<xsd:pattern value="[a-zA-Z0-9. -_]*"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CodigoC20NType">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="0"/>
+			<xsd:maxLength value="20"/>
+			<xsd:whiteSpace value="collapse"/>
+			<xsd:pattern value="[a-zA-Z0-9. -_]*"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CodigoC20RType">
+		<xsd:restriction base="CodigoC20NType">
+			<xsd:minLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CodigoC10NType">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="0"/>
+			<xsd:maxLength value="10"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CodigoC10RType">
+		<xsd:restriction base="CodigoC10NType">
+			<xsd:minLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CodigoN10NType">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="0"/>
+			<xsd:maxLength value="10"/>
+			<xsd:whiteSpace value="collapse"/>
+			<xsd:pattern value="[0-9 ]*"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CodigoN10RType">
+		<xsd:restriction base="CodigoN10NType">
+			<xsd:minLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CorreElectronicoC100NType">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="0"/>
+			<xsd:maxLength value="100"/>
+			<xsd:whiteSpace value="collapse"/>
+			<xsd:pattern value="(\w+([-+. '_]\w+)*@\w+([- ._]\w+)*\.\w+([ -._]\w+)*)?"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DepartamentoN2RType">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="2"/>
+			<xsd:maxLength value="2"/>
+			<xsd:pattern value="([0-9][0-9])?"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DescripcionC2000NType">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="0"/>
+			<xsd:maxLength value="2000"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DescripcionC2000RType">
+		<xsd:restriction base="DescripcionC2000NType">
+			<xsd:minLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DireccionC300RType">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="300"/>
+			<xsd:whiteSpace value="preserve"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DocumentoC15NType">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="0"/>
+			<xsd:maxLength value="15"/>
+			<xsd:whiteSpace value="collapse"/>
+			<xsd:pattern value="[a-zA-Z0-9]*"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DocumentoC15RType">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="15"/>
+			<xsd:whiteSpace value="collapse"/>
+			<xsd:pattern value="[a-zA-Z0-9]*"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="EnteroN9RType">
+		<xsd:restriction base="xsd:int">
+			<xsd:minInclusive value="0"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="MesN2RType">
+		<xsd:restriction base="xsd:int">
+			<xsd:minInclusive value="1"/>
+			<xsd:maxInclusive value="12"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="MunicipioN3RType">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="3"/>
+			<xsd:maxLength value="3"/>
+			<xsd:pattern value="([0-9]{3})?"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="NombreC100NType">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="0"/>
+			<xsd:maxLength value="100"/>
+			<xsd:whiteSpace value="collapse"/>
+			<xsd:pattern value="[a-zA-Z0-9á-úÁ-Ú ñÑ.-_]*"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="NombreC100RType">
+		<xsd:restriction base="NombreC100NType">
+			<xsd:minLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PorcentajeN3RType">
+		<xsd:restriction base="xsd:decimal">
+			<xsd:fractionDigits value="2"/>
+			<xsd:maxInclusive value="100"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TelefonoN20RType">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="20"/>
+			<xsd:whiteSpace value="collapse"/>
+			<xsd:pattern value="[0-9 ]*"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ValorN18RType">
+		<xsd:restriction base="xsd:decimal">
+			<xsd:fractionDigits value="2"/>
+			<xsd:maxExclusive value="10000000000000000"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="VigenciaN4RType">
+		<xsd:restriction base="xsd:int">
+			<xsd:minInclusive value="2000"/>
+			<xsd:maxInclusive value="2099"/>
+			<xsd:totalDigits value="4"/>
+			<xsd:pattern value="([0-9]{4})?"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="WwwC100NType">
+		<xsd:restriction base="xsd:anyURI">
+			<xsd:minLength value="0"/>
+			<xsd:maxLength value="100"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

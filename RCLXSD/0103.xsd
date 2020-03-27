@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 3 (http://www.altova.com) by jam (casa) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:include schemaLocation="0001.xsd"/>
+	<xs:element name="fuentes">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="fuente" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="fuente">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="codigo" type="CodigoEspecialC20RType"/>
+				<xs:element name="nombre" type="NombreC100RType"/>
+				<xs:element name="codigoHomologado" type="CodigoC20RType"/>
+				<xs:element name="conFondos" type="BooleanB2RType" minOccurs="0"/>
+				<xs:element name="libreDestinacion" type="BooleanB2RType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 3 (http://www.altova.com) by jam (casa) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="0001.xsd"/>
+	<xs:element name="cxpRubro">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="rubroFuente" type="CodigoC50RType"/>
+				<xs:element name="valor" type="ValorN18RType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Rubros">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="cxpRubro" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="cuentasxPagar">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="cuentaxPagar" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="cuentaxPagar">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="consecutivo" type="CodigoC20RType"/>
+				<xs:element name="vigencia" type="VigenciaN4RType"/>
+				<xs:element name="fecha" type="xs:date"/>
+				<xs:element name="beneficiario" type="DocumentoC15RType"/>
+				<xs:element ref="Rubros" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

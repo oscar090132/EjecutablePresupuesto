@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 3 (http://www.altova.com) by jam (casa) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="0001.xsd"/>
+	<xs:element name="disponibilidadRubro">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="rubroFuente" type="CodigoC50RType"/>
+				<xs:element name="valor" type="ValorN18RType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="proyecto">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="codigo" type="CodigoC50RType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="actividad">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="codigo" type="CodigoC50RType"/>
+				<xs:element name="porcentaje" type="PorcentajeN3RType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DisponibilidadRubros">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="disponibilidadRubro" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+		<xs:element name="Proyectos">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="proyecto" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+		<xs:element name="Actividades">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="actividad" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="disponibilidades">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="disponibilidad" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="disponibilidad">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="consecutivo" type="CodigoEspecialC20RType"/>
+				<xs:element name="fechaAprobacion" type="xs:date"/>
+				<xs:element name="descripcion" type="DescripcionC2000NType"/>
+				<xs:element name="vigencia" type="VigenciaN4RType"/>
+				<xs:element name="perteneceVigenciaFutura" type="BooleanB2RType"/>
+				<xs:element name="vigenciaFutura" type="VigenciaN4RType"/>
+				<xs:element name="tipoGasto" type="CaracterC1RType"/>
+				<xs:element ref="DisponibilidadRubros" minOccurs="1"/>
+				<xs:element ref="Proyectos" minOccurs="1"/>
+				<xs:element ref="Actividades" minOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

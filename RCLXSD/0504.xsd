@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSpy v2011 rel. 3 (http://www.altova.com) by jam (casa) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="0001.xsd"/>
+	<xs:element name="numeroContrato">
+		<xs:simpleType>
+			<xs:restriction base="CodigoC20RType">
+				<xs:maxLength value="12"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="actividad">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="proyecto" type="CodigoC20RType"/>
+				<xs:element name="codigo" type="CodigoC20RType"/>
+				<xs:element name="fechaInicial" type="xs:date"/>
+				<xs:element name="fechaFinal" type="xs:date"/>
+				<xs:element name="porcentaje" type="PorcentajeN3RType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="poliza">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="aseguradora" type="DocumentoC15RType"/>
+				<xs:element name="numeroPoliza" type="CodigoC20RType"/>
+				<xs:element name="fechaExpedicion" type="xs:date"/>
+				<xs:element name="resolucionAprobacion" type="CodigoC20RType"/>
+				<xs:element name="fechaAprobacion" type="xs:date"/>
+				<xs:element name="tipoPoliza" type="EnteroN9RType"/>
+				<xs:element name="valorAsegurado" type="ValorN18RType"/>
+				<xs:element name="fechaInicialAmparo" type="xs:date"/>
+				<xs:element name="fechaFinalAmparo" type="xs:date"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="interventoria">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="tipo" type="EnteroN9RType"/>
+				<xs:element name="vinculacion" type="BooleanB2RType"/>
+				<xs:element name="interventor" type="DocumentoC15RType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="avance">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="tipo" type="EnteroN9RType"/>
+				<xs:element name="fecha" type="xs:date"/>
+				<xs:element name="porcentajeAvance" type="PorcentajeN3RType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="modificacion">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="tipo" type="EnteroN9RType"/>
+				<xs:element name="valor" type="ValorN18RType"/>
+				<xs:element name="fecha" type="xs:date"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="proyecto">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="codigo" type="CodigoC20RType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="contratista">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="documento" type="DocumentoC15RType"/>
+				<xs:element name="tipo" type="EnteroN9RType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="disponibilidad">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="consecutivo" type="CodigoC20RType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="compromiso">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="consecutivo" type="CodigoC20RType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Contratistas">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="contratista" minOccurs="0" maxOccurs="2000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Proyectos">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="proyecto" minOccurs="0" maxOccurs="2000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Actividades">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="actividad" minOccurs="0" maxOccurs="2000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Disponibilidades">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="disponibilidad" minOccurs="0" maxOccurs="2000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Compromisos">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="compromiso" minOccurs="0" maxOccurs="2000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="Polizas">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="poliza" minOccurs="0" maxOccurs="2000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Interventorias">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="interventoria" minOccurs="0" maxOccurs="2000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Avances">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="avance" minOccurs="0" maxOccurs="2000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Modificaciones">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="modificacion" minOccurs="0" maxOccurs="2000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="contratos">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="contrato" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="contrato">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="numeroContrato"/>
+				<xs:element name="modalidad" type="CodigoC20RType"/>
+				<xs:element name="causal" type="CodigoC20RType"/>
+				<xs:element name="procedimiento" type="CodigoC10RType"/>				
+				<xs:element name="tipo" type="EnteroN9RType"/>
+				<xs:element name="tipoGasto" type="EnteroN9RType"/>
+				<xs:element name="fechaSuscripcion" type="xs:date"/>
+				<xs:element name="fechaActaInicio" type="xs:date"/>
+				<xs:element name="plazo" type="EnteroN9RType"/>
+				<xs:element name="objeto" type="DescripcionC2000RType"/>
+				<xs:element name="resolucionAdjudicacion" type="CodigoC20NType" minOccurs="0"/>
+				<xs:element name="fechaAdjudicacion" type="xs:date"/>
+				<xs:element name="valor" type="ValorN18RType"/>
+				<xs:element name="anticipo" type="BooleanB2RType"/>
+				<xs:element name="valorAnticipo" type="ValorN18RType"/>
+				<xs:element name="publicadoSECOP" type="BooleanB2RType"/>
+				<xs:element name="fechaSECOP" type="xs:date"/>
+				<xs:element name="actualizadoSECOP" type="BooleanB2RType"/>
+				<xs:element name="linkSECOP" type="DescripcionC2000RType"/>
+				<xs:element name="constituyeFiducia" type="BooleanB2RType"/>
+				<xs:element name="tipoLiquidacion" type="EnteroN9RType" minOccurs="0"/>
+				<xs:element name="documentoLiquidacion" type="CodigoC20RType" minOccurs="0"/>
+				<xs:element name="fechaLiquidacion" type="xs:date" minOccurs="0"/>
+				<xs:element ref="Contratistas" minOccurs="1"/>
+				<xs:element ref="Proyectos" minOccurs="0"/>
+				<xs:element ref="Actividades" minOccurs="0"/>
+				<xs:element ref="Disponibilidades" minOccurs="0"/>
+				<xs:element ref="Compromisos" minOccurs="0"/>
+				<xs:element ref="Polizas" minOccurs="0"/>
+				<xs:element ref="Interventorias" minOccurs="0"/>
+				<xs:element ref="Avances" minOccurs="0"/>
+				<xs:element ref="Modificaciones" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

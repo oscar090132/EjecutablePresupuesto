@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 3 (http://www.altova.com) by Jairo Marin (SINAP) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="0001.xsd"/>
+	<xs:element name="numeroCheque">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:minLength value="0"/>
+				<xs:maxLength value="50"/>
+				<xs:pattern value="[0-9a-zA-z.*_\- ]*"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="cuentaMovimientos">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="cuentaMovimiento" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="cuentaMovimiento">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="cuentaBancaria" type="CodigoC20RType"/>
+				<xs:element name="tipo" type="EnteroN9RType"/>
+				<xs:element name="fecha" type="xs:date"/>
+				<xs:element name="beneficiario" type="DocumentoN10NType" minOccurs="0"/>
+				<xs:element name="valor" type="ValorN18RType"/>
+				<xs:element ref="numeroCheque" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

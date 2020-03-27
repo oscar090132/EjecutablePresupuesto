@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 3 (http://www.altova.com) by Jairo Marin (SINAP) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="0001.xsd"/>
+	<xs:element name="movimiento">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="tipo" type="TipoC1RType"/>
+				<xs:element name="rubroFuente" type="CodigoC50RType"/>
+				<xs:element name="esCredito" type="BooleanB2RType"/>
+				<xs:element name="valor1" type="ValorN18RType" minOccurs="0"/>
+				<xs:element name="valor2" type="ValorN18RType" minOccurs="0"/>
+				<xs:element name="valor3" type="ValorN18RType" minOccurs="0"/>
+				<xs:element name="valor4" type="ValorN18RType" minOccurs="0"/>
+				<xs:element name="valor5" type="ValorN18RType" minOccurs="0"/>
+				<xs:element name="valor6" type="ValorN18RType" minOccurs="0"/>
+				<xs:element name="valor7" type="ValorN18RType" minOccurs="0"/>
+				<xs:element name="valor8" type="ValorN18RType" minOccurs="0"/>
+				<xs:element name="valor9" type="ValorN18RType" minOccurs="0"/>
+				<xs:element name="valor10" type="ValorN18RType" minOccurs="0"/>
+				<xs:element name="valor11" type="ValorN18RType" minOccurs="0"/>
+				<xs:element name="valor12" type="ValorN18RType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="MovimientoRubros">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="movimiento" maxOccurs="2000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="movimientosPresupuestales">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="movimientoPresupuestal" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="movimientoPresupuestal">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="vigencia" type="VigenciaN4RType"/>
+				<xs:element name="tipo" type="CaracterC1RType"/>
+				<xs:element name="numeroDocumento" type="CodigoC20RType"/>
+				<xs:element name="tipoDocumento" type="CaracterC1RType"/>
+				<xs:element name="fechaDocumento" type="xs:date"/>
+				<xs:element name="documentoConpes" type="CodigoC20NType" minOccurs="0"/>
+				<xs:element name="fechaDocumentoConpes" type="xs:date" minOccurs="0"/>
+				<xs:element ref="MovimientoRubros" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

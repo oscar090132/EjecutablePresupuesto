@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 3 (http://www.altova.com) by jam (casa) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="0001.xsd"/>
+	<xs:element name="tipo">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:minInclusive value="0"/>
+				<xs:maxInclusive value="9"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="numeroCheque">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:minLength value="0"/>
+				<xs:maxLength value="50"/>
+				<xs:pattern value="[0-9a-zA-z.*_\- ]*"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="afectacion">
+		<xs:complexType>
+			<xs:sequence>
+			        <xs:element name="afecta" type="BooleanB2RType"/>
+				<xs:element name="vigenciaAnterior" type="BooleanB2RType" minOccurs="0" />
+				<xs:element name="obligacionCompromiso" type="CodigoC113RType" minOccurs="0"/>
+				<xs:element name="beneficiario" type="DocumentoC15NType" minOccurs="0"/>
+				<xs:element name="fuente" type="CodigoC20RType" minOccurs="0"/>
+				<xs:element name="valor" type="ValorN18RType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="pago">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tipo"/>
+				<xs:element name="beneficiario" type="DocumentoC15RType"/>
+				<xs:element name="fuente" type="CodigoC20RType"/>
+				<xs:element name="cuentaBancaria" type="CodigoC20RType"/>
+				<xs:element ref="numeroCheque" minOccurs="0"/>
+				<xs:element name="valor" type="ValorN18RType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="deduccionRetencion">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="beneficiario" type="DocumentoC15RType"/>
+				<xs:element name="fuente" type="CodigoC20RType"/>
+				<xs:element name="retenciones" type="ValorN18RType" minOccurs="0"/>
+				<xs:element name="deducciones" type="ValorN18RType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Afectaciones">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="afectacion" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Pagos">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="pago" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DeduccionesRetenciones">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="deduccionRetencion" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="egresos">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="egreso" maxOccurs="5000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="egreso">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="consecutivo" type="CodigoC20RType"/>
+				<xs:element ref="tipo"/>
+				<xs:element name="fecha" type="xs:date"/>
+				<xs:element ref="Afectaciones" minOccurs="0"/>
+				<xs:element ref="Pagos" minOccurs="0"/>
+				<xs:element ref="DeduccionesRetenciones" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
