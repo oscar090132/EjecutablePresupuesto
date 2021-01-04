@@ -601,11 +601,21 @@ namespace AccesoDatos
             {
                 comando.Parameters.Add(parametro);
             }
-            AbrirConexion();
-            comando.CommandTimeout = 0;
-            comando.Prepare();
-            comando.ExecuteNonQuery();
-            Desconectar();
+            try
+            {
+                AbrirConexion();
+                comando.CommandTimeout = 0;
+                //comando.Prepare();
+                comando.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+            }
+            finally
+            {
+                Desconectar();
+            }
         }
         public override SqlParameter NuevoParametro(SqlParameter parametro, DateTime Value)
         {
