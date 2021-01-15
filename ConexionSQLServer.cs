@@ -391,22 +391,24 @@ namespace AccesoDatos
         {
             bool RubrosInsertados = false;
             AbrirConexion();
-            SqlBulkCopy solicitud_rubros = new SqlBulkCopy(conexion, SqlBulkCopyOptions.TableLock | SqlBulkCopyOptions.FireTriggers | SqlBulkCopyOptions.UseInternalTransaction, null);
+            SqlBulkCopy rubros_cdp = new SqlBulkCopy(conexion, SqlBulkCopyOptions.TableLock | SqlBulkCopyOptions.FireTriggers | SqlBulkCopyOptions.UseInternalTransaction, null);
             try
             {
-                solicitud_rubros.DestinationTableName = "pre_movi";
-                solicitud_rubros.ColumnMappings.Add("documento_id", "documento_id");
-                solicitud_rubros.ColumnMappings.Add("rubro", "rubro");
-                solicitud_rubros.ColumnMappings.Add("fuente", "fuente");
-                solicitud_rubros.ColumnMappings.Add("tipo", "tipo");
-                solicitud_rubros.ColumnMappings.Add("fecha_documento", "fecha_documento");
-                solicitud_rubros.ColumnMappings.Add("nrodis", "nrodis");
-                solicitud_rubros.ColumnMappings.Add("nropet", "nropet");
-                solicitud_rubros.ColumnMappings.Add("valor", "valor");
-                solicitud_rubros.ColumnMappings.Add("saldo_disponible", "saldo_disponible");
-                solicitud_rubros.ColumnMappings.Add("saldo_documento", "saldo_documento");
+                rubros_cdp.DestinationTableName = "pre_movi";
+                rubros_cdp.ColumnMappings.Add("documento_id", "documento_id");
+                rubros_cdp.ColumnMappings.Add("rubro", "rubro");
+                rubros_cdp.ColumnMappings.Add("fuente", "fuente");
+                rubros_cdp.ColumnMappings.Add("tipo", "tipo");
+                rubros_cdp.ColumnMappings.Add("fecha_documento", "fecha_documento");
+                rubros_cdp.ColumnMappings.Add("nrodis", "nrodis");
+                rubros_cdp.ColumnMappings.Add("nropet", "nropet");
+                rubros_cdp.ColumnMappings.Add("valor", "valor");
+                rubros_cdp.ColumnMappings.Add("saldo_disponible", "saldo_disponible");
+                rubros_cdp.ColumnMappings.Add("saldo_documento", "saldo_documento");
+                rubros_cdp.ColumnMappings.Add("rubro_id", "rubro_id");
+               
                 //Insertar Registros
-                solicitud_rubros.WriteToServer(dtRubros);
+                rubros_cdp.WriteToServer(dtRubros);
                 RubrosInsertados = true;
             }
             catch (Exception ex)
